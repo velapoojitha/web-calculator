@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+   <style>
+      /* styles.css */
+.btn{
+    color:orange;
+    font-size: 25px;
+    font-weight: bold;
+}
+.heading{
+    font-family: bree serif;
+    font-size: 30px;
+    color: palevioletred;
+    margin:20px;
+    text-align: center;
+}
+.btn1{
+    color: green;
+    font-size: 35px;
+    font-weight: bold;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(135deg, #a777e3, #DFECFC);
+    font-family: 'Arial', sans-serif;
+}
+
+.calculator {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    width: 350px;
+}
+
+#display {
+    width: 100%;
+    height: 60px;
+    font-size: 2rem;
+    text-align: right;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: #f3f3f3;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
+
+.buttons button {
+    width: 70px;
+    height: 70px;
+    margin: 5px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.buttons button:hover {
+    background-color: #dcdcdc;
+}
+
+.buttons button:active {
+    background-color: #bdbdbd;
+    transform: scale(0.95);
+}
+
+.zero {
+    width: 150px;
+}
+   </style>
+</head>
+
+<body>
+    <div class="calculator">
+        <h1 class="heading">Simple Calculator</h1>
+        <input type="text" id="display" readonly>
+        <div class="buttons">
+            <button class="btn" onclick="clearDisplay()">C</button>
+            <button class="btn" onclick="deleteLast()">&#9003;</button>
+            <button class="btn" onclick="appendValue('%')">%</button>
+            <button class="btn" onclick="appendValue('/')">/</button>
+            <button onclick="appendValue('9')">9</button>
+
+            <button onclick="appendValue('8')">8</button>
+            <button onclick="appendValue('7')">7</button>
+            <button class="btn" onclick="appendValue('*')">*</button>
+            <button onclick="appendValue('6')">6</button>
+
+            <button onclick="appendValue('5')">5</button>
+            <button onclick="appendValue('4')">4</button>
+            <button class="btn" onclick="appendValue('-')">-</button> 
+            <button onclick="appendValue('3')">3</button>
+            
+            <button onclick="appendValue('2')">2</button>
+            <button onclick="appendValue('1')">1</button>
+            <button class="btn" onclick="appendValue('+')">+</button>
+            <button onclick="appendValue('0')" class="zero">0</button>
+
+            <button class="btn" onclick="appendValue('.')">.</button>
+            <button class="btn1" onclick="calculate()">=</button>
+        </div>
+    </div>
+
+    
+</body>
+  <script>
+    // script.js
+let display = document.getElementById('display');
+
+function appendValue(value) {
+    display.value += value;
+}
+
+function clearDisplay() {
+    display.value = '';
+}
+
+function deleteLast() {
+    display.value = display.value.slice(0, -1);
+}
+
+function calculate() {
+    try {
+        display.value = eval(display.value);
+    } catch (error) {
+        display.value = 'Error';
+    }
+}
+  </script>
+</html>
